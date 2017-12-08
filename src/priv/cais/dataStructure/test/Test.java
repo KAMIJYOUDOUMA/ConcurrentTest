@@ -14,6 +14,7 @@ public class Test {
        List list = new ArrayList();
        list.add("e");
        String a = (String)list.get(0);
+       System.out.println(2<<8 == (2<<8^2<<8>>16));
 
     }
 
