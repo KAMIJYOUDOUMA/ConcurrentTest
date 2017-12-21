@@ -1506,7 +1506,7 @@ public class HashMap<K, V> extends AbstractMap<K, V> implements Map<K, V>, Clone
      * extends Node) so can be used as extension of either regular or
      * linked node.
      */
-    static final class TreeNode<K,V> extends Node<K,V>{
+    static final class TreeNode<K,V> extends LinkedHashMap.Entry<K,V>{
         Entry<K,V> before, after;
         TreeNode<K,V> parent;  // red-black tree links
         TreeNode<K,V> left;
