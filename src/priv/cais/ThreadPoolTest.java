@@ -12,14 +12,13 @@ import java.util.concurrent.Executors;
 
 /**
  * 如何合理地估算线程池大小 如果是CPU密集型应用，则线程池大小设置为N+1 如果是IO密集型应用，则线程池大小设置为2N+1
- * http://ifeve.com/how-to-calculate-threadpool-size/
  */
 public class ThreadPoolTest {
-    private static final int NTHREADS = 9;
-    // private static final ExecutorService exec =
-    // Executors.newFixedThreadPool(NTHREADS);
-    private static final ExecutorService exec = Executors.newCachedThreadPool();
+    private static final int NTHREADS = Runtime.getRuntime().availableProcessors() * 2 + 1;
+    private static final ExecutorService exec = Executors.newFixedThreadPool(NTHREADS);
     // 使用 CachedThreadPool 比较耗内存，并发 200+的时候 会造成内存溢出
+    // private static final ExecutorService exec = Executors.newCachedThreadPool();
+
     static long tempcount = System.currentTimeMillis() / 1000;// 用于计算每秒时间差
     static volatile int prenum = 100;// 用于计算任务数量差
     static int nums = 100;// 总任务数
@@ -42,7 +41,7 @@ public class ThreadPoolTest {
                         task();
                         long use = System.currentTimeMillis() - start;
                         System.out.println("单个耗时" + use);
-                        getCurrentThreads(use);
+                        // getCurrentThreads(use);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
