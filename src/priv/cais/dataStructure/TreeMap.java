@@ -161,10 +161,6 @@ public class TreeMap<K, V> extends AbstractMap<K, V> implements Map<K, V> {
     }
 
     private void rotateLeft(Entry<K, V> p) {
-        if(p !=null) {
-            Entry<K, V> r = p.right;
-            p.right = r.left;
-        }
         if (p != null) {
             Entry<K, V> r = p.right;
             p.right = r.left;
